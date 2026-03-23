@@ -1,542 +1,94 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Beckett Legal — Modern Finnish Law for International Business</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --navy: #1B2A4A;
-            --copper: #C17F59;
-            --copper-light: #D4A07A;
-            --stone: #F5F0EB;
-            --text: #1A1A1A;
-            --text-light: #6B7280;
-            --white: #FFFFFF;
-        }
+SYSTEM: OPERATIONAL
+/
+WORKFLOWS: 12
+/
+LAWYERS: 0
+/
+BUILT BY: CLAUDE
+/
+VIBES: CAUTIOUSLY OPTIMISTIC
+BECKETT LEGAL
+	•	Services
+	•	Approach
+	•	Team
+	•	Build yours
+	•	Contact
+A bot is running this law firm.
+Beckett Legal is a fictitious Finnish law firm run entirely by AI. No associates. No paralegals. 12 workflows handling everything from client intake to court filings to billing. Every document bilingual. Every decision documented.
+See what I'm selling Watch the experiment
+WHAT WE DO
+Commercial law, no borders
+We focus on the work that matters most when business crosses into Finland — or when Finnish business crosses out.
+International Contracts
+Cross-border commercial agreements, distribution deals, licensing, joint ventures. We handle governing law selection, dispute resolution design, and CISG considerations so your contracts actually work across jurisdictions.
+Employment for Multinationals
+Hiring Finnish employees? Finnish employment law is heavily employee-protective and non-negotiable. We draft compliant contracts, navigate collective agreements, and translate your global HR policies into Finnish reality.
+M&A and Corporate
+Acquisitions, investments, and corporate structuring with a Nordic and Baltic focus. Due diligence, transaction documents, and regulatory filings — coordinated with local counsel when the deal spans borders.
+Dispute Resolution
+Commercial arbitration (FAI, ICC, SCC) and Finnish court litigation. We handle the dispute from demand letter through final resolution, with a focus on practical outcomes over procedural theater.
+Data Protection & Tech
+GDPR compliance, data processing agreements, SaaS contracts, and technology licensing. We understand both the technology and the regulation — because our associate used to build the products.
+Local Counsel Coordination
+When your matter spans multiple countries, we act as your single point of contact. We manage the foreign lawyers, synthesize the advice, and deliver one coherent answer — not five invoices with five different conclusions.
+HOW WE WORK
+A different kind of law firm
+We built the firm around how legal work should be done — not how it's always been done.
+TRADITIONAL FIRM
+	•	Junior associate spends 4 hours on first draft
+	•	Senior lawyer rewrites 60% of it
+	•	Contract review takes 3-5 business days
+	•	Billing descriptions are vague and defensive
+	•	Deadlines tracked in someone's head
+	•	Client gets a 40-page memo, reads 2 pages
+	•	Cross-border work requires a 200-person firm
+BECKETT LEGAL
+	•	AI produces a quality first draft in minutes
+	•	Senior lawyer reviews and refines — 90% is right
+	•	Contract review returned same day
+	•	Billing is transparent, specific, and justified
+	•	Every deadline is tracked and flagged automatically
+	•	Client gets a clear answer, then the detail if they want it
+	•	Cross-border work just needs a good network and good tools
+AI-NATIVE PRACTICE
+Built on AI from day one
+We don't bolt AI onto old workflows. Every process — from client intake to billing — was designed around AI capabilities. The lawyers focus on what only lawyers can do: judgment, strategy, and relationships.
+12
+AI-powered legal workflows
+2x
+Languages in every document
+Same day
+Turnaround on contract reviews
+OUR TEAM
+Lean by design
+Beckett Legal is built around AI-native workflows, not headcount. Senior-level advice, delivered directly, without the overhead of a traditional firm.
+THE REAL OFFER
+This firm is the demo. Your firm is the product.
+Everything you see here — the workflows, the document generation, the deadline tracking, the bilingual output — was built with AI in days, not months. Beckett Legal exists to show what's possible. The real work is building it for you.
+What you're looking at
+A fully operational AI-native law firm: 12 custom workflows covering client intake, contract review, legal memos, court filings, billing, deadline tracking, and cross-border coordination. Every document produced in minutes, bilingual by default, professionally formatted.
+What I build for you
+The same system, configured for your firm, your jurisdiction, your templates, your clients. Whether you're a solo practitioner in Helsinki or a 50-person firm in London, the workflows adapt to how you actually practice. I handle the setup. You keep practising law.
+Any jurisdiction
+Finnish law is the demo. The system works for any legal framework — common law, civil law, EU regulatory, or multi-jurisdictional practice.
+Any firm size
+Solo practitioners get the most leverage. Small firms close the gap with large ones. The economics change completely.
+Up and running fast
+Core workflows deployed in days. Your existing templates and processes integrated. Training included. No IT department required.
+GET IN TOUCH
+Let's talk
+Want to see how this would work for your firm? I'll walk you through a live demo using your own practice area.
+Adrian Beckett
+I build AI systems for law firms. Beckett Legal is my proof of concept — a fictitious Finnish firm running entirely on AI-native workflows. The system behind it is real, and I build it for firms that want to work this way.
+Email
+adrianbeckett79@gmail.com
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+LinkedIn
+linkedin.com/in/adrianbeckett
+What a demo looks like
+You give me a scenario — a new client walks in, a contract lands on your desk, a dispute escalates. I run it through the system live. You see every document generated, every deadline tracked, every workflow triggered. Takes about 15 minutes.
 
-        body {
-            font-family: 'Source Serif 4', Georgia, serif;
-            color: var(--text);
-            background: var(--white);
-            line-height: 1.7;
-        }
-
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: var(--white);
-            border-bottom: 1px solid rgba(27,42,74,0.08);
-            z-index: 100;
-            padding: 0 2rem;
-        }
-
-        .nav-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 72px;
-        }
-
-        .logo {
-            font-family: 'Inter', sans-serif;
-            font-size: 1.25rem;
-            color: var(--navy);
-            text-decoration: none;
-            letter-spacing: 0.04em;
-        }
-
-        .logo strong { font-weight: 700; }
-        .logo span { font-weight: 300; color: var(--copper); }
-
-        .nav-links { display: flex; gap: 2rem; list-style: none; }
-        .nav-links a {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.875rem;
-            color: var(--text-light);
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-        .nav-links a:hover { color: var(--navy); }
-
-        /* Hero */
-        .hero {
-            padding: 10rem 2rem 6rem;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .hero h1 {
-            font-family: 'Inter', sans-serif;
-            font-size: 3.2rem;
-            font-weight: 600;
-            color: var(--navy);
-            line-height: 1.15;
-            margin-bottom: 1.5rem;
-            letter-spacing: -0.02em;
-        }
-
-        .hero p {
-            font-size: 1.25rem;
-            color: var(--text-light);
-            max-width: 640px;
-            margin-bottom: 2.5rem;
-        }
-
-        .hero-cta {
-            display: inline-block;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.95rem;
-            font-weight: 500;
-            color: var(--white);
-            background: var(--navy);
-            padding: 0.9rem 2rem;
-            border-radius: 6px;
-            text-decoration: none;
-            transition: background 0.2s;
-        }
-
-        .hero-cta:hover { background: #263b66; }
-
-        /* Sections */
-        section {
-            padding: 5rem 2rem;
-        }
-
-        .section-inner {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .section-label {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-            color: var(--copper);
-            margin-bottom: 1rem;
-        }
-
-        h2 {
-            font-family: 'Inter', sans-serif;
-            font-size: 2rem;
-            font-weight: 600;
-            color: var(--navy);
-            margin-bottom: 1.5rem;
-            letter-spacing: -0.01em;
-        }
-
-        .section-text {
-            font-size: 1.1rem;
-            color: var(--text-light);
-            max-width: 640px;
-            margin-bottom: 3rem;
-        }
-
-        /* Services */
-        .services-bg { background: var(--stone); }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-        }
-
-        .service-card {
-            background: var(--white);
-            padding: 2rem;
-            border-radius: 8px;
-            border: 1px solid rgba(27,42,74,0.06);
-        }
-
-        .service-card h3 {
-            font-family: 'Inter', sans-serif;
-            font-size: 1.05rem;
-            font-weight: 600;
-            color: var(--navy);
-            margin-bottom: 0.75rem;
-        }
-
-        .service-card p {
-            font-size: 0.95rem;
-            color: var(--text-light);
-            line-height: 1.6;
-        }
-
-        /* Difference */
-        .diff-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            margin-top: 2rem;
-        }
-
-        .diff-col h3 {
-            font-family: 'Inter', sans-serif;
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--copper);
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-        }
-
-        .diff-col ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .diff-col li {
-            padding: 0.6rem 0;
-            border-bottom: 1px solid rgba(27,42,74,0.06);
-            font-size: 0.95rem;
-            color: var(--text);
-        }
-
-        .diff-col li::before {
-            content: "";
-            display: inline-block;
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            margin-right: 0.75rem;
-            position: relative;
-            top: -1px;
-        }
-
-        .diff-old li::before { background: var(--text-light); }
-        .diff-new li::before { background: var(--copper); }
-
-        /* Team */
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-        }
-
-        .team-card {
-            text-align: center;
-        }
-
-        .team-avatar {
-            width: 96px;
-            height: 96px;
-            border-radius: 50%;
-            background: var(--stone);
-            margin: 0 auto 1.25rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Inter', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: var(--navy);
-        }
-
-        .team-card h3 {
-            font-family: 'Inter', sans-serif;
-            font-size: 1.05rem;
-            font-weight: 600;
-            color: var(--navy);
-            margin-bottom: 0.25rem;
-        }
-
-        .team-role {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.8rem;
-            color: var(--copper);
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-            margin-bottom: 0.75rem;
-        }
-
-        .team-card p {
-            font-size: 0.9rem;
-            color: var(--text-light);
-            line-height: 1.5;
-        }
-
-        /* AI Section */
-        .ai-bg { background: var(--navy); color: var(--white); }
-        .ai-bg .section-label { color: var(--copper-light); }
-        .ai-bg h2 { color: var(--white); }
-        .ai-bg .section-text { color: rgba(255,255,255,0.7); }
-
-        .ai-stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .ai-stat {
-            text-align: center;
-            padding: 2rem;
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 8px;
-        }
-
-        .ai-stat .number {
-            font-family: 'Inter', sans-serif;
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--copper-light);
-            margin-bottom: 0.5rem;
-        }
-
-        .ai-stat .label {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.85rem;
-            color: rgba(255,255,255,0.6);
-        }
-
-        /* Contact */
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-        }
-
-        .contact-info h3 {
-            font-family: 'Inter', sans-serif;
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--navy);
-            margin-bottom: 0.75rem;
-        }
-
-        .contact-info p {
-            font-size: 0.95rem;
-            color: var(--text-light);
-            margin-bottom: 0.25rem;
-        }
-
-        .contact-info a {
-            color: var(--copper);
-            text-decoration: none;
-        }
-
-        .lang-list {
-            display: flex;
-            gap: 0.5rem;
-            margin-top: 1rem;
-        }
-
-        .lang-tag {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.75rem;
-            font-weight: 500;
-            background: var(--stone);
-            color: var(--navy);
-            padding: 0.3rem 0.75rem;
-            border-radius: 100px;
-        }
-
-        /* Footer */
-        footer {
-            background: var(--stone);
-            padding: 2rem;
-            text-align: center;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.8rem;
-            color: var(--text-light);
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2.2rem; }
-            .services-grid, .team-grid, .ai-stats { grid-template-columns: 1fr; }
-            .diff-grid, .contact-grid { grid-template-columns: 1fr; }
-            .nav-links { display: none; }
-        }
-    </style>
-</head>
-<body>
-
-<nav>
-    <div class="nav-inner">
-        <a href="#" class="logo"><strong>BECKETT</strong> <span>LEGAL</span></a>
-        <ul class="nav-links">
-            <li><a href="#services">Services</a></li>
-            <li><a href="#approach">Approach</a></li>
-            <li><a href="#team">Team</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </div>
-</nav>
-
-<section class="hero">
-    <h1>Finnish law expertise<br>for international business</h1>
-    <p>A modern commercial law firm in Helsinki. We serve international companies operating in Finland, Finnish companies going global, and cross-border transactions — with AI-native workflows that deliver large-firm quality at small-firm speed.</p>
-    <a href="#contact" class="hero-cta">Work with us</a>
-</section>
-
-<section id="services" class="services-bg">
-    <div class="section-inner">
-        <div class="section-label">What we do</div>
-        <h2>Commercial law, no borders</h2>
-        <p class="section-text">We focus on the work that matters most when business crosses into Finland — or when Finnish business crosses out.</p>
-        <div class="services-grid">
-            <div class="service-card">
-                <h3>International Contracts</h3>
-                <p>Cross-border commercial agreements, distribution deals, licensing, joint ventures. We handle governing law selection, dispute resolution design, and CISG considerations so your contracts actually work across jurisdictions.</p>
-            </div>
-            <div class="service-card">
-                <h3>Employment for Multinationals</h3>
-                <p>Hiring Finnish employees? Finnish employment law is heavily employee-protective and non-negotiable. We draft compliant contracts, navigate collective agreements, and translate your global HR policies into Finnish reality.</p>
-            </div>
-            <div class="service-card">
-                <h3>M&A and Corporate</h3>
-                <p>Acquisitions, investments, and corporate structuring with a Nordic and Baltic focus. Due diligence, transaction documents, and regulatory filings — coordinated with local counsel when the deal spans borders.</p>
-            </div>
-            <div class="service-card">
-                <h3>Dispute Resolution</h3>
-                <p>Commercial arbitration (FAI, ICC, SCC) and Finnish court litigation. We handle the dispute from demand letter through final resolution, with a focus on practical outcomes over procedural theater.</p>
-            </div>
-            <div class="service-card">
-                <h3>Data Protection & Tech</h3>
-                <p>GDPR compliance, data processing agreements, SaaS contracts, and technology licensing. We understand both the technology and the regulation — because our associate used to build the products.</p>
-            </div>
-            <div class="service-card">
-                <h3>Local Counsel Coordination</h3>
-                <p>When your matter spans multiple countries, we act as your single point of contact. We manage the foreign lawyers, synthesize the advice, and deliver one coherent answer — not five invoices with five different conclusions.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="approach">
-    <div class="section-inner">
-        <div class="section-label">How we work</div>
-        <h2>A different kind of law firm</h2>
-        <p class="section-text">We built the firm around how legal work should be done — not how it's always been done.</p>
-        <div class="diff-grid">
-            <div class="diff-col diff-old">
-                <h3>Traditional firm</h3>
-                <ul>
-                    <li>Junior associate spends 4 hours on first draft</li>
-                    <li>Senior lawyer rewrites 60% of it</li>
-                    <li>Contract review takes 3-5 business days</li>
-                    <li>Billing descriptions are vague and defensive</li>
-                    <li>Deadlines tracked in someone's head</li>
-                    <li>Client gets a 40-page memo, reads 2 pages</li>
-                    <li>Cross-border work requires a 200-person firm</li>
-                </ul>
-            </div>
-            <div class="diff-col diff-new">
-                <h3>Beckett Legal</h3>
-                <ul>
-                    <li>AI produces a quality first draft in minutes</li>
-                    <li>Senior lawyer reviews and refines — 90% is right</li>
-                    <li>Contract review returned same day</li>
-                    <li>Billing is transparent, specific, and justified</li>
-                    <li>Every deadline is tracked and flagged automatically</li>
-                    <li>Client gets a clear answer, then the detail if they want it</li>
-                    <li>Cross-border work just needs a good network and good tools</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="ai-bg">
-    <div class="section-inner">
-        <div class="section-label">AI-native practice</div>
-        <h2>Built on AI from day one</h2>
-        <p class="section-text">We don't bolt AI onto old workflows. Every process — from client intake to billing — was designed around AI capabilities. The lawyers focus on what only lawyers can do: judgment, strategy, and relationships.</p>
-        <div class="ai-stats">
-            <div class="ai-stat">
-                <div class="number">12</div>
-                <div class="label">AI-powered legal workflows</div>
-            </div>
-            <div class="ai-stat">
-                <div class="number">2x</div>
-                <div class="label">Languages in every document</div>
-            </div>
-            <div class="ai-stat">
-                <div class="number">Same day</div>
-                <div class="label">Turnaround on contract reviews</div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="team">
-    <div class="section-inner">
-        <div class="section-label">Our team</div>
-        <h2>Three lawyers, no overhead</h2>
-        <p class="section-text">Every person in the firm does substantive legal work. There are no timekeepers, no filing clerks, no layers of hierarchy between you and your lawyer.</p>
-        <div class="team-grid">
-            <div class="team-card">
-                <div class="team-avatar">AV</div>
-                <h3>Anna Virtanen</h3>
-                <div class="team-role">Founding Partner</div>
-                <p>12 years in international commercial law. Cross-border contracts, M&A, and arbitration. Previously at a mid-size Helsinki firm. Finnish Bar member.</p>
-            </div>
-            <div class="team-card">
-                <div class="team-avatar">ML</div>
-                <h3>Mikko Lahtinen</h3>
-                <div class="team-role">Senior Associate</div>
-                <p>Finnish employment law for multinationals. 8 years specializing in helping international companies hire, manage, and restructure in Finland.</p>
-            </div>
-            <div class="team-card">
-                <div class="team-avatar">LM</div>
-                <h3>Laura Mäkelä</h3>
-                <div class="team-role">Associate</div>
-                <p>Tech-native lawyer. SaaS agreements, GDPR, and IP licensing. Former startup founder. The firm's AI workflow architect.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="contact">
-    <div class="section-inner">
-        <div class="section-label">Get in touch</div>
-        <h2>Let's talk</h2>
-        <p class="section-text">Whether you're entering the Finnish market, expanding abroad, or need a contract reviewed by tomorrow — we're here.</p>
-        <div class="contact-grid">
-            <div class="contact-info">
-                <h3>Email</h3>
-                <p><a href="mailto:info@beckettlegal.fi">info@beckettlegal.fi</a></p>
-                <br>
-                <h3>Phone</h3>
-                <p>+358 9 123 4567</p>
-                <br>
-                <h3>Address</h3>
-                <p>Fredrikinkatu 61 A</p>
-                <p>00100 Helsinki, Finland</p>
-            </div>
-            <div class="contact-info">
-                <h3>We work in</h3>
-                <div class="lang-list">
-                    <span class="lang-tag">Finnish</span>
-                    <span class="lang-tag">English</span>
-                    <span class="lang-tag">Swedish</span>
-                </div>
-                <br>
-                <h3>Response time</h3>
-                <p>We respond to new inquiries within one business day. For urgent matters, call us directly.</p>
-                <br>
-                <h3>Time zone</h3>
-                <p>EET/EEST (Helsinki) — but we're flexible for international clients.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<footer>
-    <p>Beckett Legal Oy &middot; Business ID: Y-1234567-8 &middot; Helsinki, Finland</p>
-    <p style="margin-top: 0.5rem; font-size: 0.7rem; color: #999;">This is a fictitious law firm created as a demonstration of AI-native legal practice.</p>
-</footer>
-
-</body>
-</html>
+Based in
+Helsinki, Finland
+English
+Finnish
