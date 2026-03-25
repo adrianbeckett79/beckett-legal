@@ -1,552 +1,345 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Beckett Legal — A Bot Is Running This Law Firm</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --navy: #1B2A4A;
-            --copper: #C17F59;
-            --copper-light: #D4A07A;
-            --stone: #F5F0EB;
-            --text: #1A1A1A;
-            --text-light: #6B7280;
-            --white: #FFFFFF;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beckett Legal â Commercial Law, Built on AI</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #1B2A4A;
+      --copper: #C17F59;
+      --copper-light: #D4A07A;
+      --stone: #F5F0EB;
+      --text: #1A1A1A;
+      --text-light: #6B7280;
+      --white: #FFFFFF;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Source Serif 4', Georgia, serif; color: var(--text); background: var(--white); line-height: 1.7; }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+    /* Status Bar */
+    .status-bar { position: fixed; top: 0; width: 100%; background: #0a0a0a; z-index: 200; padding: 0.5rem 2rem; font-family: 'Inter', sans-serif; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.5); }
+    .status-bar-inner { max-width: 1200px; margin: 0 auto; display: flex; gap: 1.5rem; align-items: center; }
+    .status-dot { width: 6px; height: 6px; border-radius: 50%; background: #22c55e; display: inline-block; margin-right: 0.4rem; animation: pulse 2s ease-in-out infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+    .status-bar span.green { color: #22c55e; }
+    .status-bar span.dim { color: rgba(255,255,255,0.3); }
 
-        body {
-            font-family: 'Source Serif 4', Georgia, serif;
-            color: var(--text);
-            background: var(--white);
-            line-height: 1.7;
-        }
+    /* Navigation */
+    nav { position: fixed; top: 28px; width: 100%; background: var(--white); border-bottom: 1px solid rgba(27,42,74,0.08); z-index: 100; padding: 0 2rem; }
+    .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; height: 72px; }
+    .logo { font-family: 'Inter', sans-serif; font-size: 1.25rem; color: var(--navy); text-decoration: none; letter-spacing: 0.04em; }
+    .logo strong { font-weight: 700; }
+    .logo span { font-weight: 300; color: var(--copper); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { font-family: 'Inter', sans-serif; font-size: 0.875rem; color: var(--text-light); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--navy); }
 
-        /* Status Bar */
-        .status-bar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: #0a0a0a;
-            z-index: 200;
-            padding: 0.5rem 2rem;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.7rem;
-            font-weight: 500;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: rgba(255,255,255,0.5);
-        }
+    /* Hero */
+    .hero { padding: 12rem 2rem 6rem; max-width: 900px; margin: 0 auto; }
+    .hero h1 { font-family: 'Inter', sans-serif; font-size: 3.2rem; font-weight: 600; color: var(--navy); line-height: 1.15; margin-bottom: 1.5rem; letter-spacing: -0.02em; }
+    .hero p { font-size: 1.25rem; color: var(--text-light); max-width: 640px; margin-bottom: 2.5rem; }
+    .hero-sub { font-size: 1rem; font-style: italic; color: var(--copper); margin-bottom: 2.5rem; max-width: 640px; }
+    .hero-cta { display: inline-block; font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 500; color: var(--white); background: var(--navy); padding: 0.9rem 2rem; border-radius: 6px; text-decoration: none; transition: background 0.2s; }
+    .hero-cta:hover { background: #263b66; }
 
-        .status-bar-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            gap: 1.5rem;
-            align-items: center;
-        }
+    /* Sections */
+    section { padding: 5rem 2rem; }
+    .section-inner { max-width: 1000px; margin: 0 auto; }
+    .section-label { font-family: 'Inter', sans-serif; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; color: var(--copper); margin-bottom: 1rem; }
+    h2 { font-family: 'Inter', sans-serif; font-size: 2rem; font-weight: 600; color: var(--navy); margin-bottom: 1.5rem; letter-spacing: -0.01em; }
+    .section-text { font-size: 1.1rem; color: var(--text-light); max-width: 640px; margin-bottom: 3rem; }
 
-        .status-dot {
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: #22c55e;
-            display: inline-block;
-            margin-right: 0.4rem;
-            animation: pulse 2s ease-in-out infinite;
-        }
+    /* Comparison Table */
+    .comparison-table { width: 100%; border-collapse: collapse; font-family: 'Inter', sans-serif; font-size: 0.95rem; margin-top: 2rem; }
+    .comparison-table th { padding: 1rem 1.5rem; text-align: left; font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; border-bottom: 2px solid rgba(27,42,74,0.1); }
+    .comparison-table th:first-child { color: var(--text-light); width: 30%; }
+    .comparison-table th:nth-child(2) { color: var(--text-light); }
+    .comparison-table th:nth-child(3) { color: var(--copper); }
+    .comparison-table td { padding: 0.9rem 1.5rem; border-bottom: 1px solid rgba(27,42,74,0.06); vertical-align: top; }
+    .comparison-table td:first-child { font-weight: 500; color: var(--navy); }
+    .comparison-table td:nth-child(2) { color: var(--text-light); }
+    .comparison-table td:nth-child(3) { color: var(--text); font-weight: 500; }
+    .comparison-table tr:hover { background: var(--stone); }
 
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.4; }
-        }
+    /* Services */
+    .services-bg { background: var(--stone); }
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+    .service-card { background: var(--white); padding: 2rem; border-radius: 8px; border: 1px solid rgba(27,42,74,0.06); }
+    .service-card h3 { font-family: 'Inter', sans-serif; font-size: 1.05rem; font-weight: 600; color: var(--navy); margin-bottom: 0.75rem; }
+    .service-card p { font-size: 0.95rem; color: var(--text-light); line-height: 1.6; }
 
-        .status-bar span.green { color: #22c55e; }
-        .status-bar span.dim { color: rgba(255,255,255,0.3); }
+    /* Problem section */
+    .problem-section { background: var(--white); }
+    .problem-section blockquote { font-size: 1.25rem; font-style: italic; color: var(--navy); border-left: 3px solid var(--copper); padding-left: 1.5rem; margin: 2rem 0; max-width: 600px; }
+    .problem-section p { font-size: 1.05rem; color: var(--text-light); max-width: 700px; margin-bottom: 1.25rem; }
+    .problem-section p strong { color: var(--navy); font-style: normal; }
 
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 28px;
-            width: 100%;
-            background: var(--white);
-            border-bottom: 1px solid rgba(27,42,74,0.08);
-            z-index: 100;
-            padding: 0 2rem;
-        }
+    /* AI Section */
+    .ai-bg { background: var(--navy); color: var(--white); }
+    .ai-bg .section-label { color: var(--copper-light); }
+    .ai-bg h2 { color: var(--white); }
+    .ai-bg .section-text { color: rgba(255,255,255,0.7); }
+    .ai-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 2rem; }
+    .ai-stat { text-align: center; padding: 2rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; }
+    .ai-stat .number { font-family: 'Inter', sans-serif; font-size: 2.5rem; font-weight: 700; color: var(--copper-light); margin-bottom: 0.5rem; }
+    .ai-stat .label { font-family: 'Inter', sans-serif; font-size: 0.85rem; color: rgba(255,255,255,0.6); }
 
-        .nav-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 72px;
-        }
+    /* Contact */
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+    .contact-info h3 { font-family: 'Inter', sans-serif; font-size: 1rem; font-weight: 600; color: var(--navy); margin-bottom: 0.75rem; }
+    .contact-info p { font-size: 0.95rem; color: var(--text-light); margin-bottom: 0.25rem; }
+    .contact-info a { color: var(--copper); text-decoration: none; }
+    .lang-list { display: flex; gap: 0.5rem; margin-top: 1rem; }
+    .lang-tag { font-family: 'Inter', sans-serif; font-size: 0.75rem; font-weight: 500; background: var(--stone); color: var(--navy); padding: 0.3rem 0.75rem; border-radius: 100px; }
 
-        .logo {
-            font-family: 'Inter', sans-serif;
-            font-size: 1.25rem;
-            color: var(--navy);
-            text-decoration: none;
-            letter-spacing: 0.04em;
-        }
+    /* Arrow list */
+    .arrow-list { list-style: none; padding: 0; margin: 1.5rem 0; }
+    .arrow-list li { padding: 0.5rem 0; font-family: 'Inter', sans-serif; font-size: 0.95rem; color: var(--text); border-bottom: 1px solid rgba(27,42,74,0.06); }
+    .arrow-list li::before { content: "â "; color: var(--copper); font-weight: 600; }
 
-        .logo strong { font-weight: 700; }
-        .logo span { font-weight: 300; color: var(--copper); }
+    /* Footer */
+    footer { background: var(--stone); padding: 2rem; text-align: center; font-family: 'Inter', sans-serif; font-size: 0.8rem; color: var(--text-light); }
 
-        .nav-links { display: flex; gap: 2rem; list-style: none; }
-        .nav-links a {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.875rem;
-            color: var(--text-light);
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-        .nav-links a:hover { color: var(--navy); }
-
-        /* Hero */
-        .hero {
-            padding: 12rem 2rem 6rem;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .hero h1 {
-            font-family: 'Inter', sans-serif;
-            font-size: 3.2rem;
-            font-weight: 600;
-            color: var(--navy);
-            line-height: 1.15;
-            margin-bottom: 1.5rem;
-            letter-spacing: -0.02em;
-        }
-
-        .hero p {
-            font-size: 1.25rem;
-            color: var(--text-light);
-            max-width: 640px;
-            margin-bottom: 2.5rem;
-        }
-
-        .hero-cta {
-            display: inline-block;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.95rem;
-            font-weight: 500;
-            color: var(--white);
-            background: var(--navy);
-            padding: 0.9rem 2rem;
-            border-radius: 6px;
-            text-decoration: none;
-            transition: background 0.2s;
-        }
-
-        .hero-cta:hover { background: #263b66; }
-
-        /* Sections */
-        section {
-            padding: 5rem 2rem;
-        }
-
-        .section-inner {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .section-label {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-            color: var(--copper);
-            margin-bottom: 1rem;
-        }
-
-        h2 {
-            font-family: 'Inter', sans-serif;
-            font-size: 2rem;
-            font-weight: 600;
-            color: var(--navy);
-            margin-bottom: 1.5rem;
-            letter-spacing: -0.01em;
-        }
-
-        .section-text {
-            font-size: 1.1rem;
-            color: var(--text-light);
-            max-width: 640px;
-            margin-bottom: 3rem;
-        }
-
-        /* Services */
-        .services-bg { background: var(--stone); }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-        }
-
-        .service-card {
-            background: var(--white);
-            padding: 2rem;
-            border-radius: 8px;
-            border: 1px solid rgba(27,42,74,0.06);
-        }
-
-        .service-card h3 {
-            font-family: 'Inter', sans-serif;
-            font-size: 1.05rem;
-            font-weight: 600;
-            color: var(--navy);
-            margin-bottom: 0.75rem;
-        }
-
-        .service-card p {
-            font-size: 0.95rem;
-            color: var(--text-light);
-            line-height: 1.6;
-        }
-
-        /* Difference */
-        .diff-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            margin-top: 2rem;
-        }
-
-        .diff-col h3 {
-            font-family: 'Inter', sans-serif;
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--copper);
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-        }
-
-        .diff-col ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .diff-col li {
-            padding: 0.6rem 0;
-            border-bottom: 1px solid rgba(27,42,74,0.06);
-            font-size: 0.95rem;
-            color: var(--text);
-        }
-
-        .diff-col li::before {
-            content: "";
-            display: inline-block;
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            margin-right: 0.75rem;
-            position: relative;
-            top: -1px;
-        }
-
-        .diff-old li::before { background: var(--text-light); }
-        .diff-new li::before { background: var(--copper); }
-
-        /* AI Section */
-        .ai-bg { background: var(--navy); color: var(--white); }
-        .ai-bg .section-label { color: var(--copper-light); }
-        .ai-bg h2 { color: var(--white); }
-        .ai-bg .section-text { color: rgba(255,255,255,0.7); }
-
-        .ai-stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .ai-stat {
-            text-align: center;
-            padding: 2rem;
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 8px;
-        }
-
-        .ai-stat .number {
-            font-family: 'Inter', sans-serif;
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--copper-light);
-            margin-bottom: 0.5rem;
-        }
-
-        .ai-stat .label {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.85rem;
-            color: rgba(255,255,255,0.6);
-        }
-
-        /* Contact */
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-        }
-
-        .contact-info h3 {
-            font-family: 'Inter', sans-serif;
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--navy);
-            margin-bottom: 0.75rem;
-        }
-
-        .contact-info p {
-            font-size: 0.95rem;
-            color: var(--text-light);
-            margin-bottom: 0.25rem;
-        }
-
-        .contact-info a {
-            color: var(--copper);
-            text-decoration: none;
-        }
-
-        .lang-list {
-            display: flex;
-            gap: 0.5rem;
-            margin-top: 1rem;
-        }
-
-        .lang-tag {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.75rem;
-            font-weight: 500;
-            background: var(--stone);
-            color: var(--navy);
-            padding: 0.3rem 0.75rem;
-            border-radius: 100px;
-        }
-
-        /* Footer */
-        footer {
-            background: var(--stone);
-            padding: 2rem;
-            text-align: center;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.8rem;
-            color: var(--text-light);
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2.2rem; }
-            .services-grid, .ai-stats { grid-template-columns: 1fr; }
-            .diff-grid, .contact-grid { grid-template-columns: 1fr; }
-            .nav-links { display: none; }
-            .status-bar-inner { flex-wrap: wrap; gap: 0.5rem; }
-            .hero-cta { margin-bottom: 0.5rem; }
-        }
-    </style>
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2.2rem; }
+      .services-grid, .ai-stats { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .status-bar-inner { flex-wrap: wrap; gap: 0.5rem; }
+      .hero-cta { margin-bottom: 0.5rem; }
+      .comparison-table { font-size: 0.85rem; }
+      .comparison-table th, .comparison-table td { padding: 0.75rem; }
+    }
+  </style>
 </head>
 <body>
 
-<div class="status-bar">
+  <div class="status-bar">
     <div class="status-bar-inner">
-        <span><span class="status-dot"></span><span class="green">System: Operational</span></span>
-        <span class="dim">/</span>
-        <span>Workflows: <span class="green">12</span></span>
-        <span class="dim">/</span>
-        <span>Lawyers: <span class="green">0</span></span>
-        <span class="dim">/</span>
-        <span>Built by: <span class="green">Claude</span></span>
-        <span class="dim">/</span>
-        <span>Vibes: <span class="green">Cautiously optimistic</span></span>
+      <span><span class="status-dot"></span><span class="green">System: Operational</span></span>
+      <span class="dim">/</span>
+      <span>Workflows: <span class="green">12</span></span>
+      <span class="dim">/</span>
+      <span>Lawyers: <span class="green">0</span></span>
+      <span class="dim">/</span>
+      <span>Built by: <span class="green">Claude</span></span>
+      <span class="dim">/</span>
+      <span>Vibes: <span class="green">Cautiously optimistic</span></span>
     </div>
-</div>
+  </div>
 
-<nav>
+  <nav>
     <div class="nav-inner">
-        <a href="#" class="logo"><strong>BECKETT</strong> <span>LEGAL</span></a>
-        <ul class="nav-links">
-            <li><a href="#services">Services</a></li>
-            <li><a href="#approach">Approach</a></li>
-            <li><a href="#build">Build yours</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
+      <a href="#" class="logo"><strong>BECKETT</strong> <span>LEGAL</span></a>
+      <ul class="nav-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#approach">How it works</a></li>
+        <li><a href="#build">Build yours</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
     </div>
-</nav>
+  </nav>
 
-<section class="hero">
-    <h1>A bot is running<br>this law firm.</h1>
-    <p>Beckett Legal is a fictitious Finnish law firm run entirely by AI. No associates. No paralegals. 12 workflows handling everything from client intake to court filings to billing. Every document bilingual. Every decision documented.</p>
-    <a href="#build" class="hero-cta">See what I'm selling</a>
-    <a href="#services" class="hero-cta" style="background: transparent; color: var(--navy); border: 1px solid rgba(27,42,74,0.2); margin-left: 1rem;">Watch the experiment</a>
-</section>
+  <!-- HERO -->
+  <section class="hero">
+    <h1>This is a commercial law firm<br>built entirely on AI.</h1>
+    <p>No associates. No paralegals. 12 workflows handling everything from client intake to court filings to billing. Every document bilingual. Every deadline tracked automatically.</p>
+    <p class="hero-sub">It's not a real firm. It's what a real firm could look like.</p>
+    <a href="#services" class="hero-cta">See it run</a>
+    <a href="#build" class="hero-cta" style="background: transparent; color: var(--navy); border: 1px solid rgba(27,42,74,0.2); margin-left: 1rem;">Build this for my firm</a>
+  </section>
 
-<section id="services" class="services-bg">
+  <!-- COMPARISON TABLE -->
+  <section class="services-bg">
     <div class="section-inner">
-        <div class="section-label">What we do</div>
-        <h2>Commercial law, no borders</h2>
-        <p class="section-text">We focus on the work that matters most when business crosses into Finland, or when Finnish business crosses out.</p>
-        <div class="services-grid">
-            <div class="service-card">
-                <h3>International Contracts</h3>
-                <p>Cross-border commercial agreements, distribution deals, licensing, joint ventures. We handle governing law selection, dispute resolution design, and CISG considerations so your contracts actually work across jurisdictions.</p>
-            </div>
-            <div class="service-card">
-                <h3>Employment for Multinationals</h3>
-                <p>Hiring Finnish employees? Finnish employment law is heavily employee-protective and non-negotiable. We draft compliant contracts, navigate collective agreements, and translate your global HR policies into Finnish reality.</p>
-            </div>
-            <div class="service-card">
-                <h3>M&amp;A and Corporate</h3>
-                <p>Acquisitions, investments, and corporate structuring with a Nordic and Baltic focus. Due diligence, transaction documents, and regulatory filings, coordinated with local counsel when the deal spans borders.</p>
-            </div>
-            <div class="service-card">
-                <h3>Dispute Resolution</h3>
-                <p>Commercial arbitration (FAI, ICC, SCC) and Finnish court litigation. We handle the dispute from demand letter through final resolution, with a focus on practical outcomes over procedural theater.</p>
-            </div>
-            <div class="service-card">
-                <h3>Data Protection &amp; Tech</h3>
-                <p>GDPR compliance, data processing agreements, SaaS contracts, and technology licensing. We understand both the technology and the regulation.</p>
-            </div>
-            <div class="service-card">
-                <h3>Local Counsel Coordination</h3>
-                <p>When your matter spans multiple countries, we act as your single point of contact. We manage the foreign lawyers, synthesize the advice, and deliver one coherent answer, not five invoices with five different conclusions.</p>
-            </div>
-        </div>
+      <div class="section-label">The numbers</div>
+      <h2>What changes when you start from scratch</h2>
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Traditional firm</th>
+            <th>Beckett Legal</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>First draft</td>
+            <td>4 hours (junior associate)</td>
+            <td>Minutes. 90% right.</td>
+          </tr>
+          <tr>
+            <td>Contract review</td>
+            <td>3â5 business days</td>
+            <td>Same day</td>
+          </tr>
+          <tr>
+            <td>Deadline tracking</td>
+            <td>In someone's head</td>
+            <td>Automated and flagged</td>
+          </tr>
+          <tr>
+            <td>Billing descriptions</td>
+            <td>Vague and defensive</td>
+            <td>Specific and justified</td>
+          </tr>
+          <tr>
+            <td>Cross-border work</td>
+            <td>Needs a 200-person firm</td>
+            <td>Needs good tools and a good network</td>
+          </tr>
+          <tr>
+            <td>Languages</td>
+            <td>One</td>
+            <td>Two, by default</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-</section>
+  </section>
 
-<section id="approach">
+  <!-- SERVICES -->
+  <section id="services">
     <div class="section-inner">
-        <div class="section-label">How we work</div>
-        <h2>A different kind of law firm</h2>
-        <p class="section-text">We built the firm around how legal work should be done, not how it's always been done.</p>
-        <div class="diff-grid">
-            <div class="diff-col diff-old">
-                <h3>Traditional firm</h3>
-                <ul>
-                    <li>Junior associate spends 4 hours on first draft</li>
-                    <li>Senior lawyer rewrites 60% of it</li>
-                    <li>Contract review takes 3-5 business days</li>
-                    <li>Billing descriptions are vague and defensive</li>
-                    <li>Deadlines tracked in someone's head</li>
-                    <li>Client gets a 40-page memo, reads 2 pages</li>
-                    <li>Cross-border work requires a 200-person firm</li>
-                </ul>
-            </div>
-            <div class="diff-col diff-new">
-                <h3>Beckett Legal</h3>
-                <ul>
-                    <li>AI produces a quality first draft in minutes</li>
-                    <li>Senior lawyer reviews and refines, 90% is right</li>
-                    <li>Contract review returned same day</li>
-                    <li>Billing is transparent, specific, and justified</li>
-                    <li>Every deadline is tracked and flagged automatically</li>
-                    <li>Client gets a clear answer, then the detail if they want it</li>
-                    <li>Cross-border work just needs a good network and good tools</li>
-                </ul>
-            </div>
+      <div class="section-label">What the system handles</div>
+      <h2>Commercial law, no borders</h2>
+      <p class="section-text">The workflows cover the full range of cross-border commercial practice. These aren't services I offer â they're proof the system works.</p>
+      <div class="services-grid">
+        <div class="service-card">
+          <h3>International Contracts</h3>
+          <p>Cross-border commercial agreements, distribution deals, licensing, joint ventures. Governing law selection, dispute resolution design, and CISG considerations so contracts actually work across jurisdictions.</p>
         </div>
+        <div class="service-card">
+          <h3>Employment for Multinationals</h3>
+          <p>Finnish employment contracts, collective agreement navigation, global HR policy localisation. Finnish employment law is heavily employee-protective and non-negotiable.</p>
+        </div>
+        <div class="service-card">
+          <h3>M&amp;A and Corporate</h3>
+          <p>Due diligence, transaction documents, regulatory filings. Nordic and Baltic focus, coordinated with local counsel when the deal spans borders.</p>
+        </div>
+        <div class="service-card">
+          <h3>Dispute Resolution</h3>
+          <p>Commercial arbitration (FAI, ICC, SCC) and Finnish court litigation. From demand letter to final resolution, with a focus on practical outcomes over procedural theatre.</p>
+        </div>
+        <div class="service-card">
+          <h3>Data Protection &amp; Tech</h3>
+          <p>GDPR compliance, data processing agreements, SaaS contracts, and technology licensing. The system understands both the technology and the regulation.</p>
+        </div>
+        <div class="service-card">
+          <h3>Local Counsel Coordination</h3>
+          <p>Multi-jurisdiction matters managed from a single point of contact. One coherent answer â not five invoices with five different conclusions.</p>
+        </div>
+      </div>
     </div>
-</section>
+  </section>
 
-<section class="ai-bg">
+  <!-- THE PROBLEM -->
+  <section id="approach" class="problem-section" style="background: var(--stone);">
     <div class="section-inner">
-        <div class="section-label">AI-native practice</div>
-        <h2>Built on AI from day one</h2>
-        <p class="section-text">We don't bolt AI onto old workflows. Every process, from client intake to billing, was designed around AI capabilities. The lawyers focus on what only lawyers can do: judgment, strategy, and relationships.</p>
-        <div class="ai-stats">
-            <div class="ai-stat">
-                <div class="number">12</div>
-                <div class="label">AI-powered legal workflows</div>
-            </div>
-            <div class="ai-stat">
-                <div class="number">2x</div>
-                <div class="label">Languages in every document</div>
-            </div>
-            <div class="ai-stat">
-                <div class="number">Same day</div>
-                <div class="label">Turnaround on contract reviews</div>
-            </div>
-        </div>
+      <div class="section-label">How it works</div>
+      <h2>The problem I'm solving</h2>
+      <blockquote>"We know we need to change. We just don't know where to start."</blockquote>
+      <p>Most lawyers I speak to in Tampere say the same thing. That's fair. The AI landscape is a mess. The vendor pitches are worse. And nobody has time to run an experiment while a client is waiting.</p>
+      <p>So I ran it for them.</p>
+      <p>Beckett Legal is what an AI-native commercial law firm looks like when you start from scratch â not when you bolt a chatbot onto an existing process and call it transformation.</p>
+      <p><strong>The biggest barrier isn't budget. It isn't technology.</strong> It's that nobody's shown what the other side actually looks like.</p>
+      <p>This is the other side.</p>
     </div>
-</section>
+  </section>
 
-<section id="build" class="services-bg">
+  <!-- AI STATS -->
+  <section class="ai-bg">
     <div class="section-inner">
-        <div class="section-label">The real offer</div>
-        <h2>This firm is the demo. Your firm is the product.</h2>
-        <p class="section-text">Everything you see here, the workflows, the document generation, the deadline tracking, the bilingual output, was built with AI in days, not months. Beckett Legal exists to show what's possible. The real work is building it for you.</p>
-        <div class="services-grid" style="grid-template-columns: 1fr 1fr;">
-            <div class="service-card">
-                <h3>What you're looking at</h3>
-                <p>A fully operational AI-native law firm: 12 custom workflows covering client intake, contract review, legal memos, court filings, billing, deadline tracking, and cross-border coordination. Every document produced in minutes, bilingual by default, professionally formatted.</p>
-            </div>
-            <div class="service-card">
-                <h3>What I build for you</h3>
-                <p>The same system, configured for your firm, your jurisdiction, your templates, your clients. Whether you're a solo practitioner in Helsinki or a 50-person firm in London, the workflows adapt to how you actually practice. I handle the setup. You keep practising law.</p>
-            </div>
+      <div class="section-label">AI-native from day one</div>
+      <h2>Built around AI capabilities, not bolted onto them</h2>
+      <p class="section-text">Every process â from client intake to billing â was designed around what AI can do. The lawyers focus on what only lawyers can do: judgment, strategy, and relationships.</p>
+      <div class="ai-stats">
+        <div class="ai-stat">
+          <div class="number">12</div>
+          <div class="label">AI-powered legal workflows</div>
         </div>
-        <div style="margin-top: 2rem;">
-            <div class="services-grid" style="grid-template-columns: repeat(3, 1fr);">
-                <div class="service-card" style="text-align: center;">
-                    <h3>Any jurisdiction</h3>
-                    <p>Finnish law is the demo. The system works for any legal framework, common law, civil law, EU regulatory, or multi-jurisdictional practice.</p>
-                </div>
-                <div class="service-card" style="text-align: center;">
-                    <h3>Any firm size</h3>
-                    <p>Solo practitioners get the most leverage. Small firms close the gap with large ones. The economics change completely.</p>
-                </div>
-                <div class="service-card" style="text-align: center;">
-                    <h3>Up and running fast</h3>
-                    <p>Core workflows deployed in days. Your existing templates and processes integrated. Training included. No IT department required.</p>
-                </div>
-            </div>
+        <div class="ai-stat">
+          <div class="number">2x</div>
+          <div class="label">Languages in every document</div>
         </div>
+        <div class="ai-stat">
+          <div class="number">Same day</div>
+          <div class="label">Turnaround on contract reviews</div>
+        </div>
+      </div>
     </div>
-</section>
+  </section>
 
-<section id="contact">
+  <!-- BUILD FOR YOU -->
+  <section id="build" class="services-bg">
     <div class="section-inner">
-        <div class="section-label">Get in touch</div>
-        <h2>Let's talk</h2>
-        <p class="section-text">Want to see how this would work for your firm? I'll walk you through a live demo using your own practice area.</p>
-        <div class="contact-grid">
-            <div class="contact-info">
-                <h3>Adrian Beckett</h3>
-                <p style="margin-bottom: 1rem; color: var(--text);">I build AI systems for law firms. Beckett Legal is my proof of concept, a fictitious Finnish firm running entirely on AI-native workflows. The system behind it is real, and I build it for firms that want to work this way.</p>
-                <h3>Email</h3>
-                <p><a href="mailto:adrianbeckett79@gmail.com">adrianbeckett79@gmail.com</a></p>
-                <br>
-                <h3>LinkedIn</h3>
-                <p><a href="https://linkedin.com/in/adrianbeckett" target="_blank">linkedin.com/in/adrianbeckett</a></p>
-            </div>
-            <div class="contact-info">
-                <h3>What a demo looks like</h3>
-                <p>You give me a scenario, a new client walks in, a contract lands on your desk, a dispute escalates. I run it through the system live. You see every document generated, every deadline tracked, every workflow triggered. Takes about 15 minutes.</p>
-                <br>
-                <h3>Based in</h3>
-                <p>Helsinki, Finland</p>
-                <div class="lang-list">
-                    <span class="lang-tag">English</span>
-                    <span class="lang-tag">Finnish</span>
-                </div>
-            </div>
+      <div class="section-label">Also: I build this for other firms</div>
+      <h2>Beckett Legal isn't the product. It's the proof.</h2>
+      <p class="section-text">The real work is building it for your firm â your jurisdiction, your practice areas, your templates, your clients.</p>
+      <ul class="arrow-list">
+        <li>12 core workflows: client intake, contract review, legal memos, court filings, billing, deadline tracking, cross-border coordination</li>
+        <li>Documents in minutes, bilingual by default, professionally formatted</li>
+        <li>Every deadline tracked and flagged automatically</li>
+        <li>Up and running in days, not months. No IT department required.</li>
+      </ul>
+      <div class="services-grid" style="grid-template-columns: repeat(3, 1fr); margin-top: 2rem;">
+        <div class="service-card" style="text-align: center;">
+          <h3>Any firm</h3>
+          <p>Solo practitioners get the most leverage. You close the gap with firms ten times your size. The economics change completely.</p>
         </div>
+        <div class="service-card" style="text-align: center;">
+          <h3>Any jurisdiction</h3>
+          <p>Finnish law is the demo. The system adapts to any legal framework â common law, civil law, EU regulatory, multi-jurisdictional.</p>
+        </div>
+        <div class="service-card" style="text-align: center;">
+          <h3>Fast setup</h3>
+          <p>Core workflows deployed in days. Your existing templates and processes integrated. Training included.</p>
+        </div>
+      </div>
     </div>
-</section>
+  </section>
 
-<footer>
-    <p>Beckett Legal Oy is a fictitious law firm created as a demonstration of AI-native legal practice.</p>
-    <p style="margin-top: 0.5rem; font-size: 0.7rem; color: #999;">Built by Adrian Beckett &middot; Helsinki, Finland</p>
-</footer>
+  <!-- CONTACT / THE OFFER -->
+  <section id="contact">
+    <div class="section-inner">
+      <div class="section-label">The offer</div>
+      <h2>15 minutes. No deck. No pitch.</h2>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <p style="font-size: 1.05rem; color: var(--text); margin-bottom: 1.5rem;">You give me a scenario. A new client walks in. A contract lands on your desk. A dispute escalates.</p>
+          <p style="font-size: 1.05rem; color: var(--text); margin-bottom: 1.5rem;">I run it through the system live. You see every document generated, every deadline tracked, every workflow triggered.</p>
+          <p style="font-size: 1.05rem; color: var(--text); margin-bottom: 2rem;">If it's not obviously useful, we stop there.</p>
+          <a href="mailto:adrianbeckett79@gmail.com" class="hero-cta">Book 15 minutes</a>
+        </div>
+        <div class="contact-info">
+          <h3>Adrian Beckett</h3>
+          <p style="margin-bottom: 1rem; color: var(--text);">I'm not a lawyer. I build AI systems for firms that are. Beckett Legal is my proof of concept â a commercial law firm built from scratch on AI workflows, covering the full range of cross-border commercial practice.</p>
+          <p style="margin-bottom: 0.25rem;">The system is real. The results are real. The lawyer still needs to be you.</p>
+          <br>
+          <h3>Email</h3>
+          <p><a href="mailto:adrianbeckett79@gmail.com">adrianbeckett79@gmail.com</a></p>
+          <br>
+          <h3>LinkedIn</h3>
+          <p><a href="https://linkedin.com/in/adrian-beckett" target="_blank">linkedin.com/in/adrian-beckett</a></p>
+          <br>
+          <h3>Based in</h3>
+          <p>Tampere, Finland</p>
+          <div class="lang-list">
+            <span class="lang-tag">English</span>
+            <span class="lang-tag">Finnish</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>Beckett Legal Oy is a demonstration of AI-native legal practice. Not a licensed law firm.</p>
+    <p style="margin-top: 0.5rem; font-size: 0.7rem; color: #999;">Built by Adrian Beckett &middot; Tampere, Finland</p>
+  </footer>
 
 </body>
 </html>
